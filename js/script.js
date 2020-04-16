@@ -4,7 +4,7 @@ let website = document.querySelector('.website');
 window.addEventListener('load', () => {
     setTimeout(() => {
         preloader.classList.add('zoomOutRight');
-        website.style.display = 'block';
+        website.style = '';
         document.querySelector('#home .jumbotron .word').classList.add('rollIn-left');
         document.querySelector('#home .jumbotron .image').classList.add('rollIn-right');
     }, 1500);
