@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="../output/css/style.min.css">
+  <link rel="stylesheet" href="css/animasi.css">
+  <link rel="icon" href="img/internet.png">
+  <title>Tailwind Starter</title>
+  <style>
+    .neo-shadow {
+      box-shadow: 0 20px 25px -5px rgba(49, 46, 46, 0.07),
+        0 -20px 25px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    * {
+      scroll-behavior: smooth;
+    }
+
+    @font-face {
+      font-family: amaranth;
+      src: url(font/Amaranth-Regular.ttf);
+    }
+
+    @font-face {
+      font-family: blogger;
+      src: url(font/Blogger_sans.otf);
+    }
+
+    @font-face {
+      font-family: roboto;
+      src: url(font/Roboto-Regular.ttf);
+    }
+
+    .show {
+      animation: show .5s forwards;
+    }
+
+    .mobile-nav-link-active:hover {
+      background-color: #6b46c1;
+    }
+
+    #about .jumbotron {
+      min-height: 900px;
+    }
+
+    #counterUp {
+      background-image: url(image/count-bg.jpg);
+      background-size: cover;
+      background-position: center center;
+      background-attachment: fixed;
+    }
+
+    .karya img {
+      box-shadow: 0 0 0.1rem .5rem #76e4ff52;
+      border-radius: 1rem;
+    }
+
+    @media (min-width:765px) {
+      #about .jumbotron {
+        min-height: 700px;
+        max-height: 750px;
+      }
+    }
+
+    @media (min-width: 1023px) {
+      #about .jumbotron {
+        min-height: 800px;
+        max-height: 900px;
+      }
+    }
+
+    /* Preloader */
+    .spin-container {
+      width: 200px;
+      height: 200px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      overflow: hidden;
+    }
+
+    .spin {
+      height: calc(100% - 1px);
+      width: calc(100% - 1px);
+      border-radius: 50%;
+      border: 12px solid #162534;
+      border-top: 12px solid #09f;
+      animation: spin 2.5s linear infinite;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+
+<body class="overflow-x-hidden">
+  <div class="preloader fixed w-full h-screen z-50" style="background-color:#0d161f;">
+    <div class="spin-container">
+      <div class="spin">
+        <div class="spin">
+          <div class="spin">
+            <div class="spin"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="website" style="display:none;">
+    <section id="home">
+      <nav class="z-10 fixed w-full h-16 py-5 px-2 bg-grad-purple top-0">
+        <div class="container h-full mx-auto flex items-center">
+          <div class="nav-brand ">
+            <a href="#home" class="">
+              AimaWebsite
+            </a>
+          </div>
+          <div class="nav-item ml-auto hidden md:block">
+            <a href="#home" class="nav-link nav-link-active">Home</a>
+            <a href="#about" class="nav-link">About</a>
+            <a href="#portfolio" class="nav-link">Portfolio</a>
+            <a href="#price" class="nav-link">Price</a>
+            <a href="#contact" class="nav-link mr-0">Contact</a>
+          </div>
+          <div class="togle-nav ml-auto md:hidden">
+            <!-- <img src="img/bars.svg" class="w-3" alt=""> -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4" viewBox="0 0 23 20">
+              <path id="bars"
+                d="M.821,63.673H22.179A.819.819,0,0,0,23,62.857V60.816A.819.819,0,0,0,22.179,60H.821A.819.819,0,0,0,0,60.816v2.041A.819.819,0,0,0,.821,63.673Zm0,8.163H22.179A.819.819,0,0,0,23,71.02V68.98a.819.819,0,0,0-.821-.816H.821A.819.819,0,0,0,0,68.98V71.02A.819.819,0,0,0,.821,71.837ZM.821,80H22.179A.819.819,0,0,0,23,79.184V77.143a.819.819,0,0,0-.821-.816H.821A.819.819,0,0,0,0,77.143v2.041A.819.819,0,0,0,.821,80Z"
+                transform="translate(0 -60)" fill="#fff" />
+            </svg>
+
+          </div>
+        </div>
+      </nav>
+      <div
+        class="mobile-nav fixed h-screen z-10 hidden md:hidden w-8/12 pr-3 py-5 bg-white flex flex-col justify-start">
+        <div class="py-1">
+          <a href="#home" class="mobile-nav-link-active mobile-nav-link ">Home</a>
+        </div>
+        <div class="py-1">
+          <a href="#about" class="mobile-nav-link ">About</a>
+        </div>
+        <div class="py-1">
+          <a href="#portfolio" class="mobile-nav-link ">Portfolio</a>
+        </div>
+        <div class="py-1">
+          <a href="#price" class="mobile-nav-link ">Price</a>
+        </div>
+        <div class="py-1">
+          <a href="#contact" class="mobile-nav-link ">Contact</a>
+        </div>
+
+      </div>
+
+      <!-- Jumbotron -->
+      <div class="jumbotron bg-mypurple relative">
+        <div class="container h-full">
+          <div class="row items-center justify-center">
+            <div class="col-lg-6 order-2 md:order-1 flex items-center flex-col md:items-start word opacity-0">
+              <h1 class="font-semibold text-white text-center text-2xl md:text-left md:text-4xl">
+                Jasa Pembuatan <br>
+                Website <span class="text-myorange">Terbaik </span> 2020
+              </h1>
+              <a href="#about">
+                <button class="btn px-10 py-3 mt-3 bg-myorange" style="font-family:roboto">Learn
+                  More</button> </a>
+
+            </div>
+            <div class="col-lg-6 w-5/6 order-1 md:order-2 md:w-1/2 image opacity-0">
+              <img src="image/home.png" alt="">
+            </div>
+          </div>
+        </div>
+        <div class="bottom-path">
+          <img src="image/lengkung.png" alt="">
+        </div>
+      </div>
+    </section>
+    <section id="about" class="pt-10 pb-20">
+      <div class="container">
+        <div class="py-16 mb-5" id="alasan-website">
+          <h1 class="heading mb-8">Mengapa Harus Memiliki Website ?</h1>
+          <div class="flex flex-col md:flex-row">
+
+            <div class="w-full md:w-1/3 px-1 list-alasan opacity-0">
+              <div class="w-48 h-48 p-5 mx-auto">
+                <img src="image/promosi.png" alt="" class="max-w-full mx-auto">
+              </div>
+              <h2 class="text-center mt-5 text-2xl font-semibold" style="font-family: blogger;">Media Promosi <br> yang
+                paling
+                efektif
+              </h2>
+              <p class="mt-2 font-light text-center text-lg">Anda menjadi punya media promosi yang “bekerja” selama 24
+                jam
+                penuh, bisa di akses dimana pun, kapanpun oleh siapapun, tentunya tertarget</p>
+            </div>
+            <div class="w-full md:w-1/3 px-1 list-alasan opacity-0 mt-8 md:mt-0">
+              <div class="w-50 h-48 p-5 mx-auto">
+                <img src="image/murah.png" alt="" class="max-w-full mx-auto">
+              </div>
+              <h2 class="text-center mt-5 text-2xl font-semibold" style="font-family: blogger;">Membuat website <br> itu
+                murah
+              </h2>
+              <p class="mt-2 font-light text-center text-lg">Anda bisa memilih paket pembuatan website sesuai dengan
+                budget
+                yang kamu miliki. Walaupun dengan biaya yang murah tapi website kamu masih memiliki kualitas yang baik
+              </p>
+            </div>
+            <div class="w-full md:w-1/3 px-1 list-alasan opacity-0 mt-8 md:mt-0">
+              <div class="w-50 h-48 p-5 mx-auto">
+                <img src="image/target.png" alt="" class="max-w-full mx-auto">
+              </div>
+              <h2 class="text-center mt-5 text-2xl font-semibold" style="font-family: blogger;">Target pasar <br> yang
+                lebih
+                luas
+              </h2>
+              <p class="mt-2 font-light text-center text-lg">Calon pelanggan dari luar daerah bisa menjangkau bisnis
+                Anda,
+                begitu pun sebaliknya Anda juga bisa mencapai calon pelanggan seluas-luasnya</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="jumbotron relative tentang">
+        <div class="container">
+          <div class="row py-16 md:py-20 lg:pb-24 items-center">
+            <div class="col-lg-6 tentang-img opacity-0">
+              <img src="image/about.png" class="mx-auto w-2/3 md:w-5/6" alt="">
+
+            </div>
+            <div class="col-lg-6 opacity-0 tentang-word text-lg text-white text-center pl-0 md:pl-5 md:text-justify">
+              <h1 class="text-2xl font-semibold mb-5">Tentang Perusahaan Kami</h1>
+              <p>
+                AimaWebsite adalah sebuah situs penyedia
+                layanan pembuatan website.
+                Layanan ini kami buat sebagai ajang bisnis sekaligus
+                untuk membantu mereka yang ingin memiliki
+                webiste namun tidak bisa membuatnya sendiri.
+                Kami menawarkan harga yang murah dengan
+                kualitas tinggi dan pengerjaan cepat.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="bottom-path">
+          <img src="image/lengkung.png" alt="">
+        </div>
+      </div>
+      <div
+        class="bg-white rounded-lg shadow-lg w-10/12 p-5 px-2 mx-auto relative md:px-5 md:py-6 lg:px-8 lg:py-10 memilih opacity-0"
+        style="margin-top: -200px;">
+        <h1 class="heading text-xl">Lalu Mengapa Harus <br> Memilih Layanan Kami?</h1>
+        <div class="row items-baseline">
+          <div
+            class="w-full mt-5 text-left flex flex-row md:flex-col justify-center items-center px-2 md:text-center md:w-1/3">
+            <div class="image mb-2 w-4/12 md:w-full">
+              <img src="image/fast.png" class="w-20 mx-auto" alt="">
+            </div>
+            <div class="words w-8/12 md:w-full">
+              <h1 class="font-bold mb-1">Pengerjaan Cepat</h1>
+              <p class="text-xs font-light md:text-sm lg:text-base pr-2">Kami dapat membuat website anda dengan waktu
+                Pengerjaan
+                yang
+                cepat
+              </p>
+            </div>
+          </div>
+          <div
+            class="w-full mt-5 text-left flex flex-row md:flex-col justify-center items-center px-2 md:text-center md:w-1/3">
+            <div class="image mb-2 w-4/12 md:w-full">
+              <img src="image/interface.png" class="w-20 mx-auto" alt="">
+            </div>
+            <div class="words w-8/12 md:w-full">
+              <h1 class="font-bold mb-1">Tampilan Website Menarik</h1>
+              <p class="text-xs font-light md:text-sm lg:text-base">
+                Kami buatkan website untuk anda dengan tampilan yang menarik, modern, dan clean
+              </p>
+            </div>
+          </div>
+          <div
+            class="w-full mt-5 text-left flex flex-row md:flex-col justify-center items-center px-2 md:text-center md:w-1/3">
+            <div class="image mb-2 w-4/12 md:w-full">
+              <img src="image/responsive.png" class="w-20 mx-auto" alt="">
+            </div>
+            <div class="words w-8/12 md:w-full">
+              <h1 class="font-bold mb-1">Responsive</h1>
+              <p class="text-xs font-light md:text-sm lg:text-base">Lorem ipsum dolor sit amet consectetur adipisicing
+                elit. Perspiciatis itaque
+                magnam
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+    <section id="portfolio">
+      <div class="flex flex-col pb-16 pt-16 items-center w-full karya bg-grad-purple">
+        <div
+          class="container w-full h-full mx-auto px-5 md:px-10 lg:px-20 xl:max-w-screen-xl lg:max-w-screen-lg md:max-w-screen-md sm:max-w-screen-sm">
+          <h1 class="heading text-white text-center mt-5 mb-5">
+            Portfolio Kami
+          </h1>
+          <div class="w-11/12 md:w-10/12 mx-auto">
+
+            <div class="w-full mb-8 p-3 rounded-lg"><img src="image/port-1.jpg" class="w-full opacity-0"></div>
+            <div class="w-full mb-8 p-3 rounded-lg"><img src="image/port-2.jpg" class="w-full opacity-0"></div>
+            <div class="w-full mb-8 p-3 rounded-lg"><img src="image/port-3.jpg" class="w-full opacity-0"></div>
+            <div class="w-full mb-8 p-3 rounded-lg"><img src="image/port-4.jpg" class="w-full opacity-0"></div>
+          </div>
+        </div>
+
+      </div>
+      <div class="flex py-12 flex-col md:py-20 md:flex-row" id="counterUp">
+        <div class="w-full md:w-1/3 p-5 flex md:justify-end">
+          <div
+            class="rounded-full shadow-lg flex flex-col mx-auto md:mx-0 justify-center items-center bg-white w-32 h-32 ">
+            <span class="text-4xl" id="count1">0</span><span class="text-sm">Client</span>
+          </div>
+        </div>
+        <div class="w-full md:w-1/3 p-5">
+          <div class="rounded-full shadow-lg flex flex-col mx-auto justify-center items-center bg-white w-32 h-32 ">
+            <span class="text-4xl" id="count2">0</span><span class="text-sm">Project</span>
+          </div>
+        </div>
+        <div class="w-full p-5 flex md:justify-start md:w-1/3">
+          <div
+            class="rounded-full shadow-lg flex flex-col justify-center mx-auto md:mx-0 items-center bg-white w-32 h-32 ">
+            <span class="text-4xl" id="count3">0</span><span class="text-sm">Personel</span>
+          </div>
+        </div>
+      </div>
+      <div class="bungkus overflow-hidden">
+        <h1 class="heading mt-8">Client Kami</h1>
+        <div class="flex flex-row pt-6 pb-10 justify-center items-center">
+          <div class="p-5 ml-3 mr-3 w-48 h-20 sm:h-32 rounded-lg flex justify-center items-center shadow-lg">
+            <img src="image/client/client-1.png" alt="" class="max-w-full opacity-75 hover:opacity-100">
+          </div>
+          <div class="p-5 ml-3 mr-3 w-48 h-20 sm:h-32 rounded-lg flex justify-center items-center shadow-lg">
+            <img src="image/client/client-2.png" alt="" class="max-w-full opacity-75 hover:opacity-100">
+          </div>
+          <div class="p-5 ml-3 mr-3 w-48 h-20 sm:h-32 rounded-lg flex justify-center items-center shadow-lg">
+            <img src="image/client/client-3.png" alt="" class="max-w-full opacity-75 hover:opacity-100">
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="price">
+      <div class="bg-grad-purple py-20 pb-32 relative harga">
+        <h1 class="heading mt-2 text-white">Harga Jasa Pembuatan Website</h1>
+        <div class="container h-full px-10 xl:max-w-full lg:max-w-screen-lg md:max-w-screen-md sm:max-w-screen-sm mt-5">
+          <div class="flex flex-col md:flex-row items-center">
+            <div
+              class="bg-white shadow-lg rounded-lg pb-5 w-full flex flex-col items-center mb-5 md:mx-1 lg:mx-10 md:mt-12 opacity-0">
+              <div class="header w-full p-3 pb-10 rounded-lg">
+                <h1 class="text-2xl text-center">
+                  Basic Plan
+                </h1>
+                <h1 class="text-4xl font-thin text-white text-center">600<span class="text-lg">k</span></h1>
+              </div>
+              <ol type="A" class="text-center mt-2  p-5">
+                <li>
+                  <p class="font-light"><span class="font-semibold">5</span> Halaman</p>
+                </li>
+                <li>
+                  <p class="font-light"><span class="font-semibold">5 Hari</span> Pengerjaan</p>
+                </li>
+                <li>
+                  <p class="font-light"><span class="font-semibold">1x</span> Revisi</p>
+                </li>
+                <li>
+                  <p class="font-light"><span class="font-semibold">1</span> SEO Keyword</p>
+                </li>
+                <li>
+                  <p class="font-light"><span class="font-semibold">5 Page</span> SEO Dasar</p>
+                </li>
+                <li>
+                  <p class="font-light"><span class="font-semibold">10</span> Upload Setup Gambar</p>
+                </li>
+                <li>
+                  <p class="font-light"><span class="font-semibold">+3</span> Akun Email</p>
+                </li>
+              </ol>
+              <button class="btn btn-blue rounded-full">Pesan
+                Sekarang</button>
+            </div>
+            <div
+              class="bg-white shadow-lg rounded-lg pb-5 w-full flex flex-col items-center mb-5 md:mx-1 lg:mx-10 opacity-0">
+              <div class="header w-full p-3 pb-10 rounded-lg">
+                <h1 class="text-2xl text-center">
+                  Pro Plan
+                </h1>
+                <h1 class="text-4xl font-thin text-white text-center">1.1<span class="text-lg">Jt</span></h1>
+              </div>
+              <ol type="A" class="text-center mt-3 p-5">
+                <li>
+                  <p class="font-light"><span class="font-semibold">10</span> Halaman</p>
+                </li>
+                <li>
+                  <p class="font-light"><span class="font-semibold">7 Hari</span> Pengerjaan</p>
+                </li>
+                <li>
+                  <p class="font-light"><span class="font-semibold">3x</span> Revisi</p>
+                </li>
+                <li>
+                  <p class="font-light"><span class="font-semibold">2</span> SEO Keyword</p>
+                </li>
+                <li>
+                  <p class="font-light"><span class="font-semibold">10 Page</span> SEO Dasar</p>
+                </li>
+                <li>
+                  <p class="font-light"><span class="font-semibold">20</span> Upload Setup Gambar</p>
+                </li>
+                <li>
+                  <p class="font-light"><span class="font-semibold">+5</span> Akun Email</p>
+                </li>
+              </ol>
+              <button class="btn btn-blue rounded-full">Pesan
+                Sekarang</button>
+            </div>
+            <div
+              class="bg-white shadow-lg rounded-lg pb-5 w-full flex flex-col items-center mb-5 md:mx-1 lg:mx-10 md:mt-12 opacity-0">
+              <div class="header w-full p-3 pb-10 rounded-lg">
+                <h1 class="text-2xl text-center">
+                  Business Plan
+                </h1>
+                <h1 class="text-4xl font-thin text-white text-center">1.85<span class="text-sm">Jt</span></h1>
+              </div>
+              <ol type="A" class="text-center mt-5 p-5">
+                <li>
+                  <p class="font-light"><span class="font-semibold">20</span> Halaman</p>
+                </li>
+                <li>
+                  <p class="font-light"><span class="font-semibold">14 Hari</span> Pengerjaan</p>
+                </li>
+                <li>
+                  <p class="font-light"><span class="font-semibold">5x</span> Revisi</p>
+                </li>
+                <li>
+                  <p class="font-light"><span class="font-semibold">3</span> SEO Keyword</p>
+                </li>
+                <li>
+                  <p class="font-light"><span class="font-semibold">20 Page</span> SEO Dasar</p>
+                </li>
+                <li>
+                  <p class="font-light"><span class="font-semibold">50</span> Upload Setup Gambar</p>
+                </li>
+                <li>
+                  <p class="font-light"><span class="font-semibold">+10</span> Akun Email</p>
+                </li>
+              </ol>
+              <button class="btn btn-blue rounded-full">Pesan
+                Sekarang</button>
+            </div>
+          </div>
+        </div>
+        <div class="bottom-path">
+          <img src="image/lengkung.png" alt="">
+        </div>
+      </div>
+
+      <div class="testimonial overflow-hidden w-screen relative pt-6">
+        <div class="super-container bg-white overflow-hidden flex h-screen items-center"
+          style="width:600vw;height: 500px;">
+          <div class="w-screen content" id="lastClone">
+            <div class="shadow-lg p-8 w-9/12 bg-white mx-auto rounded-lg md:w-7/12">
+              <img src="image/testimonial-4.jpg" alt="" class="lg:w-30 w-24 rounded-full">
+              <h2 class="text-lg font-bold mb-1 md:text-xl">Bagas Kurniawan</h2>
+              <p class="font-light text-gray-500 mb-1 md:text-lg">Penjual Furniture</p>
+              <p class="text-sm italic md:w-3/4 md:text-base">"Untuk saya yang berjualan Furniture sangat susah
+                apabila tidak
+                punya
+                website.
+                Jadi saya coba searching dan menemukan IndoWebsite, Saya lihat terpercaya, lalu saya coba
+                pesan dan
+                Hasilnya memuaskan"</p>
+            </div>
+          </div>
+          <div class="w-screen content">
+            <div class="shadow-lg p-8 w-9/12 bg-white mx-auto rounded-lg md:w-7/12">
+              <img src="image/testimonial-1.jpg" alt="" class="lg:w-30 w-24 rounded-full">
+              <h2 class="text-lg font-bold mb-1 md:text-xl">Agus Prasetyo</h2>
+              <p class="font-light text-gray-500 mb-1 md:text-lg">Pengusaha</p>
+              <p class="text-sm italic md:w-3/4 md:text-base">
+                "Kualitas Website Baik, design kreatif, timnya
+                memberi saya kebutuhan
+                yang saya
+                inginkan. AimaWebsite jasa pembuatan website terbaik di Indonesia"</p>
+            </div>
+          </div>
+          <div class="w-screen content">
+            <div class="shadow-lg p-8 w-9/12 bg-white mx-auto rounded-lg md:w-7/12">
+              <img src="image/testimonial-2.jpg" alt="" class="lg:w-30 w-24 rounded-full">
+              <h2 class="text-lg font-bold mb-1 md:text-xl">Anisa Salsabila</h2>
+              <p class="font-light text-gray-500 mb-1 md:text-lg">Mahasiswa</p>
+              <p class="text-sm italic md:w-3/4 md:text-base">
+                "Hasilnya memuaskan, pengerjaanya tepat waktu
+                seperti yang dijanjikan,
+                pelayananya
+                ramah dan sopan. Profesional Banget Kerjanya"</p>
+            </div>
+          </div>
+          <div class="w-screen content">
+            <div class="shadow-lg p-8 w-9/12 bg-white mx-auto rounded-lg md:w-7/12">
+              <img src="image/testimonial-3.jpg" alt="" class="lg:w-30 w-24 rounded-full">
+              <h2 class="text-lg font-bold mb-1 md:text-xl">Karin Rismawati</h2>
+              <p class="font-light text-gray-500 mb-1 md:text-lg">Desainer</p>
+              <p class="text-sm italic md:w-3/4 md:text-base">
+                "Terima Kasih AimaWebsite, Hasil websitenya sangat keren, rapi, dan
+                bagus. Saya
+                tidak menyesal memakai jasa pembuatan website AimaWebsite"</p>
+            </div>
+          </div>
+          <div class="w-screen content">
+            <div class="shadow-lg p-8 w-9/12 bg-white mx-auto rounded-lg md:w-7/12">
+              <img src="image/testimonial-4.jpg" alt="" class="lg:w-30 w-24 rounded-full">
+              <h2 class="text-lg font-bold mb-1 md:text-xl">Bagas Kurniawan</h2>
+              <p class="font-light text-gray-500 mb-1 md:text-lg">Penjual Furniture</p>
+              <p class="text-sm italic md:w-3/4 md:text-base">"Untuk saya yang berjualan Furniture sangat susah
+                apabila tidak
+                punya
+                website.
+                Jadi saya coba searching dan menemukan IndoWebsite, Saya lihat terpercaya, lalu saya coba
+                pesan dan
+                Hasilnya memuaskan"</p>
+            </div>
+          </div>
+          <div class="w-screen content" id="firstClone">
+            <div class="shadow-lg p-8 w-9/12 bg-white mx-auto rounded-lg md:w-7/12">
+              <img src="image/testimonial-1.jpg" alt="" class="lg:w-30 w-24 rounded-full">
+              <h2 class="text-lg font-bold mb-1 md:text-xl">Agus Prasetyo</h2>
+              <p class="font-light text-gray-500 mb-1 md:text-lg">Pengusaha</p>
+              <p class="text-sm italic md:w-3/4 md:text-base">
+                "Kualitas Website Baik, design kreatif, timnya
+                memberi saya kebutuhan
+                yang saya
+                inginkan. AimaWebsite jasa pembuatan website terbaik di Indonesia"</p>
+            </div>
+          </div>
+        </div>
+        <!-- Judul btw ini cara yang salah jangan ditiru :v -->
+        <div class="w-screen absolute pt-6 top-0 flex justify-center" style="height: 500px;">
+          <h1 class="heading">Apa Kata Mereka ?</h1>
+        </div>
+        <!-- Button Prev & next -->
+        <div class="w-screen absolute top-0 flex items-center" style="height: 500px;">
+          <div class="w-10/12 mx-auto md:w-9/12 flex justify-between">
+            <button id="prev" class="p-1 bg-white shadow-md rounded-full hover:bg-gray-100 focus:outline-none">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 256 512">
+                <path
+                  d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z" />
+              </svg>
+            </button>
+            <button id="next" class="p-1 bg-white shadow-md rounded-full hover:bg-gray-100 focus:outline-none">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 256 512">
+                <path
+                  d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+    <section id="contact">
+      <footer class="bg-grad-purple w-full h-full pt-32 pb-5 relative"
+        style="clip-path: polygon(7% 0, 100% 10%, 100% 100%, 0 100%, 0 2%);">
+        <h1 class="heading mb-6 text-white">Kontak</h1>
+        <div class="container h-full">
+          <div class="flex flex-col md:flex-row">
+            <div class="w-full mb-6 md:mb-0 px-8 md:w-1/2">
+              <h1 class="font-sans text-white heading text-xl mb-6">Alamat</h1>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d989.0982866785467!2d109.25499710110634!3d-7.421668789418381!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e655e96a7e3cc79%3A0x6d79bcd9709b4b6!2sSMK%20Negeri%201%20Purwokerto!5e0!3m2!1sid!2sid!4v1586952475706!5m2!1sid!2sid"
+                width="100%" height="350" frameborder="0" allowfullscreen="" aria-hidden="false" tabindex="0"
+                class="rounded-lg border-0"></iframe>
+            </div>
+            <div class="w-full px-8 md:w-1/2">
+              <h1 class="heading mb-6 font-sans text-white text-xl">Kirimi Kami pesan</h1>
+              <div class="bg-white rounded-lg shadow-md p-5">
+                <form action="">
+                  <div class="flex">
+                    <input type="text" name="nama" class="form-input w-full mr-2" placeholder="Nama Lengkap">
+                    <input type="email" name="email" class="form-input w-full ml-2" placeholder="Email Kamu">
+                  </div>
+                  <input type="text" class="form-input w-full mr-2" placeholder="Subjek">
+                  <textarea name="" id="" rows="5" class="form-input w-full" placeholder="Pesanmu"></textarea>
+                  <button
+                    class="py-3 bg-gray-800 text-white px-8 mt-3 rounded shadow-2xl w-full hover:bg-gray-700">Kirim</button>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="social w-full py-10 pb-12">
+            <h1 class="heading text-white font-sans text-xl mb-6">Sosial Media</h1>
+            <div class="flex justify-center">
+              <a href="https://www.facebook.com/profile.php?id=100030701887505"
+                class="mr-3 block p-2 pl-3 pr-3 md:p-3 md:pl-4 md:pr-4 rounded-full bg-white shadow-lg hover:bg-gray-200">
+                <img src="img/facebook-f.svg" class="w-3" alt="">
+              </a>
+              <a href="https://instagram.com/invites/contact?i=195fh8qwn70bo&utm_content=7261rn3"
+                class="mr-3 block p-2 md:p-3 rounded-full bg-white shadow-lg hover:bg-gray-200">
+                <img src="img/instagram.svg" class="w-5" alt="">
+              </a>
+              <a href="https://www.anda-ketipu.com?id=242kj"
+                class="mr-3 block p-2 md:p-3 rounded-full bg-white shadow-lg hover:bg-gray-200">
+                <img src="img/twitter.svg" class="w-5" alt="">
+              </a>
+              <a href="https://api.whatsapp.com/send?phone=+6285601771828"
+                class="mr-3 block p-2 md:p-3 rounded-full bg-white shadow-lg hover:bg-gray-200">
+                <img src="img/whatsapp.svg" class="w-5" alt="">
+              </a>
+              <a href="https://t.me/Ekosusilo"
+                class="block p-2 md:p-3 rounded-full bg-white shadow-lg hover:bg-gray-200">
+                <img src="img/telegram.svg" class="w-5" alt="">
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="copyright bg-white shadow-md rounded-full w-10/12 mx-auto px-3 py-4 text-sm text-center">
+          &copy Copyright 2020 | Made By<span class="font-bold text-red-700 font-cursive">
+            EKO</span>
+        </div>
+      </footer>
+
+    </section>
+  </div>
+  <script src="js/script.js">
+
+  </script>
+</body>
+
+</html>
