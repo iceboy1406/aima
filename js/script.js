@@ -1,13 +1,20 @@
 // Preloader
 let preloader = document.querySelector('.preloader');
 let website = document.querySelector('.website');
-window.addEventListener('load', () => {
+window.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
         preloader.classList.add('zoomOutRight');
         website.style = '';
         document.querySelector('#home .jumbotron .word').classList.add('rollIn-left');
         document.querySelector('#home .jumbotron .image').classList.add('rollIn-right');
-    }, 1500);
+    }, 5000);
+});
+window.addEventListener('load', () => {
+        preloader.classList.add('zoomOutRight');
+        website.style = '';
+        document.querySelector('#home .jumbotron .word').classList.add('rollIn-left');
+        document.querySelector('#home .jumbotron .image').classList.add('rollIn-right');
+
 });
 let toggle = document.querySelector('.togle-nav');
 let mobnav = document.querySelector('.mobile-nav');
